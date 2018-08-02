@@ -19,7 +19,6 @@ fun main(args: Array<String>) {
 }
 
 fun parse(jsonStr: String): List<CharCodeInfo> {
-    println(jsonStr)
     val json = Klaxon().parseJsonObject(jsonStr.reader())
     return json.array<JsonArray<String>>("list_dz")!!.map {
         val items = it.map { StringEscapeUtils.unescapeJava(it) }
