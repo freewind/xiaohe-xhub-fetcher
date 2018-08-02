@@ -37,7 +37,7 @@ ext {
     publishedGroupId = 'github.freewind'
     // `artifact` also use as and `bintray.pkg.name` for simplifying
     artifact = 'xiaohe-xhub-fetcher'
-    libraryVersion = '0.2.0'
+    libraryVersion = '0.1.0'
     // `libraryName` also uses as `bintray.pkg.libraryName` and `bintray.pkg.version.libraryName`
     libraryName = 'XiaoHe YinXing Code Getter'
 

@@ -19,7 +19,7 @@ search_word=绥驈三问
 
 返回如下：
 
-```
+```json
 {
     "list_dz": [
         ["\u7ee5\uff1a\u3000\u3000svs svsn", "\u7e9f\u3000\u30ce\u3000\u2e8d\u3000\u5973", "\u7e9f", "\u5973", "s", "n", "\u7ee5"],
@@ -34,7 +34,7 @@ search_word=绥驈三问
 
 其中含有很多Unicode字符，如果我们手动将其解析，则内容如下：
 
-```
+```json
 {
     "list_dz": [
         ["绥：　　svs svsn", "纟　ノ　⺍　女", "纟", "纟", "s", "n", "绥"],
@@ -58,12 +58,18 @@ CharCodeInfo('问', listOf("wf", "wfmk"), listOf(Part('门', 'm'), Part('口', '
 使用
 ---
 
-```
+```gradle
 repositories {
     maven { url 'https://dl.bintray.com/freewind/maven/' }
 }
 
 dependencies {
-    compile ''
+    compile 'github.freewind:xiaohe-xhub-fetcher:0.1.0'
 }
+```
+
+```kotlin
+import github.freewind.xiaohe.xhub.XHubFetcher
+
+XHubFetcher.fetch("绥驈三问".toList())
 ```
