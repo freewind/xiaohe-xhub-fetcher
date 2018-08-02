@@ -30,8 +30,8 @@ class XHubFetcherTest {
 
     @Test
     fun `test the longestCode`() {
-        val char = CharCodeInfo('绥', listOf("svs", "svsn"), listOf(Part("纟", 's'), Part("ノ"), Part("⺍"), Part("女", 'n')))
-        assertThat(char.longestCode).isEqualTo("svsn")
+        val char = CharCodeInfo('六', listOf("lqw", "lqwb", "luwb"), emptyList())
+        assertThat(char.longestCode).isEqualTo("lqwb")
     }
 
     @Test

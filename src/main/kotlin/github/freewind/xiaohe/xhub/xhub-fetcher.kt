@@ -48,7 +48,7 @@ fun getCodes(codes: String): List<String> {
 }
 
 data class CharCodeInfo(val char: Char, val codes: List<String>, val parts: List<Part>) {
-    val longestCode = codes.last()
+    val longestCode: String = codes.find { it.length == 4 } ?: codes.last()
 }
 
 data class Part(val name: String, val code: Char? = null)
