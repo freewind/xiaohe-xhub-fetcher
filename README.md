@@ -64,7 +64,7 @@ repositories {
 }
 
 dependencies {
-    compile 'github.freewind:xiaohe-xhub-fetcher:0.1.0'
+    compile 'github.freewind:xiaohe-xhub-fetcher:0.2.0'
 }
 ```
 
