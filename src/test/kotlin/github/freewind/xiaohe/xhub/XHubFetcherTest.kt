@@ -22,16 +22,24 @@ class XHubFetcherTest {
 
         val chars = parse(json)
         assertThat(chars).isEqualTo(listOf(
-                CharCodeInfo('绥', listOf("svs", "svsn"), listOf(Part('纟', 's'), Part('ノ'), Part('⺍'), Part('女', 'n'))),
-                CharCodeInfo('三', listOf("s", "sja", "sjae"), listOf(Part('一', 'a'), Part('二', 'e'))),
-                CharCodeInfo('问', listOf("wf", "wfmk"), listOf(Part('门', 'm'), Part('口', 'k')))
+                CharCodeInfo('绥', listOf("svs", "svsn"), listOf(Part("纟", 's'), Part("ノ"), Part("⺍"), Part("女", 'n'))),
+                CharCodeInfo('三', listOf("s", "sja", "sjae"), listOf(Part("一", 'a'), Part("二", 'e'))),
+                CharCodeInfo('问', listOf("wf", "wfmk"), listOf(Part("门", 'm'), Part("口", 'k')))
         ))
     }
 
     @Test
     fun `test the longestCode`() {
-        val char = CharCodeInfo('绥', listOf("svs", "svsn"), listOf(Part('纟', 's'), Part('ノ'), Part('⺍'), Part('女', 'n')))
+        val char = CharCodeInfo('绥', listOf("svs", "svsn"), listOf(Part("纟", 's'), Part("ノ"), Part("⺍"), Part("女", 'n')))
         assertThat(char.longestCode).isEqualTo("svsn")
+    }
+
+    @Test
+    fun `test a char whose part use more than one char to describe`() {
+        val result = XHubFetcher.fetch("哀".toList())
+        assertThat(result).containsExactly(
+                CharCodeInfo(char = '哀', codes = listOf("aiw", "aiwy"), parts = listOf(Part(name = "亠", code = 'w'), Part(name = "口"), Part(name = "衣下", code = 'y')))
+        )
     }
 
     @Test

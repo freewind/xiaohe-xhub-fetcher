@@ -14,14 +14,19 @@ object XHubFetcher {
     }
 }
 
+fun main(args: Array<String>) {
+    XHubFetcher.fetch("哀".toList())
+}
+
 fun parse(jsonStr: String): List<CharCodeInfo> {
+    println(jsonStr)
     val json = Klaxon().parseJsonObject(jsonStr.reader())
     return json.array<JsonArray<String>>("list_dz")!!.map {
         val items = it.map { StringEscapeUtils.unescapeJava(it) }
         val codes = items[0]
         val allParts = items[1]
-        val firstPart = items[2].single()
-        val lastPart = items[3].single()
+        val firstPart = items[2]
+        val lastPart = items[3]
         val firstCode = items[4].single()
         val lastCode = items[5].single()
         val char = items[6].single()
@@ -33,8 +38,8 @@ fun parse(jsonStr: String): List<CharCodeInfo> {
     }
 }
 
-private fun getParts(allParts: String, firstPart: Char, firstCode: Char, lastPart: Char, lastCode: Char) =
-        listOf(Part(firstPart, firstCode)) + allParts.split("　").drop(1).dropLast(1).map { Part(it.single()) } + listOf(Part(lastPart, lastCode))
+private fun getParts(allParts: String, firstPart: String, firstCode: Char, lastPart: String, lastCode: Char) =
+        listOf(Part(firstPart, firstCode)) + allParts.split("　").drop(1).dropLast(1).map { Part(it) } + listOf(Part(lastPart, lastCode))
 
 fun getCodes(codes: String): List<String> {
     return codes.substringAfterLast("　")
@@ -47,4 +52,4 @@ data class CharCodeInfo(val char: Char, val codes: List<String>, val parts: List
     val longestCode = codes.last()
 }
 
-data class Part(val name: Char, val code: Char? = null)
+data class Part(val name: String, val code: Char? = null)
