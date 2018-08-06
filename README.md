@@ -50,9 +50,9 @@ search_word=绥驈三问
 通过本库提供的函数，可以把它解析为更合理的数据结构以便使用：
 
 ```
-CharCodeInfo('绥', listOf("svs", "svsn"), listOf(Part('纟', 's'), Part('ノ'), Part('⺍'), Part('女', 'n')))
-CharCodeInfo('三', listOf("s", "sja", "sjae"), listOf(Part('一', 'a'), Part('二', 'e')))
-CharCodeInfo('问', listOf("wf", "wfmk"), listOf(Part('门', 'm'), Part('口', 'k')))
+CharCodeInfo('绥', codes=listOf("svs", "svsn"), parts=listOf(Part('纟', 's'), Part('ノ'), Part('⺍'), Part('女', 'n')))
+CharCodeInfo('三', codes=listOf("s", "sja", "sjae"), parts=listOf(Part('一', 'a'), Part('二', 'e')))
+CharCodeInfo('问', codes=listOf("wf", "wfmk"), parts=listOf(Part('门', 'm'), Part('口', 'k')))
 ```
 
 使用
@@ -64,7 +64,7 @@ repositories {
 }
 
 dependencies {
-    compile 'github.freewind:xiaohe-xhub-fetcher:0.2.2'
+    compile 'github.freewind:xiaohe-xhub-fetcher:0.3.0'
 }
 ```
 

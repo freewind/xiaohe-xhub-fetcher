@@ -31,7 +31,7 @@ class XHubFetcherTest {
     @Test
     fun `test the longestCode`() {
         val char = CharCodeInfo('六', listOf("lqw", "lqwb", "luwb"), emptyList())
-        assertThat(char.longestCode).isEqualTo("lqwb")
+        assertThat(char.longestCodes).isEqualTo(listOf("lqwb", "luwb"))
     }
 
     @Test
@@ -46,7 +46,7 @@ class XHubFetcherTest {
     fun `test the real request`() {
         val result = XHubFetcher.fetch("绥驈三问".toList())
         assertThat(result).hasSize(3)
-        assertThat(result.map { it.longestCode }).isEqualTo(listOf("svsn", "sjae", "wfmk"))
+        assertThat(result.map { it.longestCodes }).isEqualTo(listOf(listOf("svsn"), listOf("sjae"), listOf("wfmk")))
     }
 
 }
